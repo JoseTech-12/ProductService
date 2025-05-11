@@ -25,4 +25,5 @@ Route::get('/product', [ProductController::class, 'index'])->name('producto');
 Route::post('/createProduct', [ProductController::class, 'store'])->name('createProducto');
 Route::get('/showProduct/{id}', [ProductController::class, 'show'])->name('showProduct');
 Route::put('/updateProduct/{id}', [ProductController::class, 'update'])->name('updateProducto');
+Route::put('/updateProductStock/{id}', [ProductController::class, 'updateStock'])->name('updateProductoStock');
 Route::delete('/deleteProduct/{id}', [ProductController::class, 'destroy'])->name('deleteProducto');

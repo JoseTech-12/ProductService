@@ -75,7 +75,7 @@ class ProductController extends Controller
     }
 
 
-    public function show(ProductRequest $request, string $id)
+    public function show(Request $request, string $id)
     {
 
 
@@ -131,6 +131,26 @@ class ProductController extends Controller
 
         return response()->json([
             'message' => 'Producto actualizado correctamente',
+            'producto' => $product
+        ], 200);
+    }
+
+    public function updateStock(Request $request, string $id)
+    {
+
+
+        $product = Product::find($id);
+        if (!$product) {
+            return response()->json([
+                'message' => 'producto no encontrado'
+            ], 404);
+        }
+
+        $product->stock = $request->stock;
+        $product->save();
+
+        return response()->json([
+            'message' => 'Stock actualizado correctamente',
             'producto' => $product
         ], 200);
     }
