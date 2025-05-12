@@ -187,4 +187,19 @@ class ProductController extends Controller
 
         ], 200);
     }
+
+
+    public function restoreStock(Request $request, $id)
+    {
+        $producto = Product::find($id);
+
+        if (!$producto) {
+            return response()->json(['message' => 'Producto no encontrado'], 404);
+        }
+
+        $producto->stock += $request->cantidad;
+        $producto->save();
+
+        return response()->json(['message' => 'Stock restaurado correctamente']);
+    }
 }
