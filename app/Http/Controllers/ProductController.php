@@ -156,7 +156,7 @@ class ProductController extends Controller
     }
 
 
-    public function destroy(ProductRequest $request, string $id)
+    public function destroy(Request $request, string $id)
     {
         $token = $request->bearerToken();
         $user = $this->auth->getUserFromToken($token);
